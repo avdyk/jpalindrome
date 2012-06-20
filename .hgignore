@@ -1,2 +1,5 @@
 syntaxe: regexp
 WEB-INF/classes
+WEB-INF/deploy
+war/jpalindrome_gae
+gwt-unitCache
