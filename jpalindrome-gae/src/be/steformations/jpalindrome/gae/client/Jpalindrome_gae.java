@@ -41,7 +41,7 @@ public class Jpalindrome_gae implements EntryPoint {
 	public void onModuleLoad() {
 		final Button sendButton = new Button("Send");
 		final TextBox nameField = new TextBox();
-		nameField.setText("GWT User");
+		nameField.setText("kayak");
 		final Label errorLabel = new Label();
 
 		// We can add style names to widgets
@@ -68,9 +68,9 @@ public class Jpalindrome_gae implements EntryPoint {
 		final HTML serverResponseLabel = new HTML();
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		dialogVPanel.addStyleName("dialogVPanel");
-		dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
+		dialogVPanel.add(new HTML("<b>Envoi de la phrase au serveur:</b>"));
 		dialogVPanel.add(textToServerLabel);
-		dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
+		dialogVPanel.add(new HTML("<br><b>Réponse du serveur:</b>"));
 		dialogVPanel.add(serverResponseLabel);
 		dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
 		dialogVPanel.add(closeButton);
@@ -120,7 +120,7 @@ public class Jpalindrome_gae implements EntryPoint {
 				textToServerLabel.setText(textToServer);
 				serverResponseLabel.setText("");
 				greetingService.greetServer(textToServer,
-						new AsyncCallback<String>() {
+						new AsyncCallback<Boolean>() {
 							public void onFailure(Throwable caught) {
 								// Show the RPC error message to the user
 								dialogBox
@@ -132,13 +132,14 @@ public class Jpalindrome_gae implements EntryPoint {
 								closeButton.setFocus(true);
 							}
 
-							public void onSuccess(String result) {
+							public void onSuccess(Boolean result) {
 								dialogBox.setText("Remote Procedure Call");
 								serverResponseLabel
-										.removeStyleName("serverResponseLabelError");
-								serverResponseLabel.setHTML(result);
+								.removeStyleName("serverResponseLabelError");
+								serverResponseLabel.setHTML(result.toString());
 								dialogBox.center();
 								closeButton.setFocus(true);
+								
 							}
 						});
 			}
