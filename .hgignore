@@ -3,3 +3,4 @@ WEB-INF/classes
 WEB-INF/deploy
 war/jpalindrome_gae
 gwt-unitCache
+\.gwt-log
